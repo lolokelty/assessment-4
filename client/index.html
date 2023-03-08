@@ -7,9 +7,115 @@
   <body class="container">
     <button id="complimentButton">Get a compliment</button>
     <button id="fortuneButton">Get a Fortune</button>
-
+    <button id="carButton">get a Car</button>
+    <button id="pictureButton">Get a picture</button>
+    
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="main.js"></script>
+
+    <div id="picture-id"></div>
+    <script>
+    //Get picture
+document.getElementById("pictureButton").onclick = function () {
+        axios.get("http://localhost:2000/api/picture/")
+            .then(function (response) {
+              const data = response.data;
+              alert(data);
+            });
+      };
+    </script>
+<header>
+</header>
+
+<main>
+  <h1 id="counter">0</h1>
+  <section>
+    <button id="minus-btn">-</button> 
+    <button id="reset-btn">Reset</button> 
+    <button id="plus-btn">+</button>
+  </section>
+</main>
+
+<body class="container">
+
+  <div id="divH1-id">  
     
+    <div  id="buttonDiv-id"></div>
+  
+    </div>
+  </div>
+      
+  
+  <div id="picture-id"></div>
+  
+  <section id="Features-Container"></section>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    
+  </script>
+  <header>
+    <h1>Music List</h1>
+  </header>
+    <main>
+      <form>
+          <input 
+              type='text'
+              id="title"
+              placeholder="What's the music's title?"/>
+          <input 
+              type='text'
+              id="img"
+              placeholder='Paste an image URL'/>
+          <section id="ratings-container">
+
+              <p>Rate the music:</p>
+
+              <div id="radio-container">
+                  <label for="one">
+                      <input
+                          type="radio"
+                          name="ratings"
+                          value="1"
+                          id="one"/>
+                      1
+                  </label>
+                  <label for="two">
+                      <input
+                          type="radio"
+                          name="ratings"
+                          value="2"
+                          id="two"/>
+                      2
+                  </label>
+                  <label for="three">
+                      <input
+                          type="radio"
+                          name="ratings"
+                          value="3"
+                          id="three"/>
+                      3
+                  </label>
+                  <label for="four">
+                      <input
+                          type="radio"
+                          name="ratings"
+                          value="4"
+                          id="four"/>
+                      4
+                  </label>
+                  <label for="five">
+                      <input
+                          type="radio"
+                          name="ratings"
+                          value="5"
+                          id="five"/>
+                      5
+                  </label>
+              </div>
+          </section>
+          <button>add music</button>
+      </form>
+      <section id="musics-container"></section>
+    </main>
   </body>
 </html>

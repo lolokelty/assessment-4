@@ -9,6 +9,13 @@
         "html-has-lang": "off"
       }
     ],
-    "meta-viewport": "off"
+    "meta-viewport": "off",
+    "axe/parsing": [
+      "default",
+      {
+        "duplicate-id-active": "off"
+      }
+    ],
+    "button-type": "off"
   }
 }
