@@ -13,9 +13,10 @@ const getCompliment = () => {
             const data = res.data;
             alert(data);
     });
+    
 };
-
 complimentBtn.addEventListener('click', getCompliment)
+
 
 ///--Fortune Handler Event--///
 const getFortune = () => {
@@ -24,9 +25,10 @@ const getFortune = () => {
         const data = res.data;
         alert(data);
     });
+    
 }
-
 getFortuneBtn.addEventListener('click', getFortune);
+
 
 ///--Car Handler Event--///
 const getCar = () => {
@@ -35,9 +37,10 @@ const getCar = () => {
         const data = res.data;
         alert(data);
     });
+    
 }
-
 getCarBtn.addEventListener('click', getCar);
+
 
 /// --Counter-- ///
 const counterText = document.querySelector('#counter')
@@ -91,7 +94,7 @@ function submitHandler(e) {
         imageURL: imageURL.value
     }
 
-    createmusics(bodyObj)
+    createMusic(bodyObj)
     title.value = ''
     rating.checked = false
     imageURL.value = ''
@@ -101,7 +104,8 @@ function createmusicCard(music) {
     const musicCard = document.createElement('div')
     musicCard.classList.add('music-card')
 
-    musicCard.innerHTML = `<img alt='music cover' src=${music.imageURL} class="music-cover"/>
+    musicCard.innerHTML = 
+    `<img alt='music cover' src=${music.imageURL} class="music-cover"/>
     <p class="music-title">${music.title}</p>
     <div class="btns-container">
     <button onclick="updateMusic(${music.id}, 
@@ -125,3 +129,32 @@ function displayMusics(arr) {
 form.addEventListener('submit', submitHandler)
 
 getAllMusics()
+
+
+// which has an input, button, and h1 element. When you press the button, the HTML inside of the h1 element will replace with the value of the input.//
+const Database = require("@replit/database");
+const db = new Database();
+const http = require("http");
+const fs = require("fs");
+const express = require("express");
+const app = express();
+
+app.use(express.static(__dirname + "/public"));
+
+app.get("/ajaxcall", async function(req, res) {
+// db.set("this works?", "it does").then(() => {console.log(db.get("this works?"))});
+res.send(req.query.keyUse);
+})
+
+app.get('/:id', function(request, response){
+fs.readFile(`${request.url == '/ajaxcall' ? '/ajaxcall' : String(request.url).substring(1)}`, null, function(error, data) {
+        if (error) {
+            response.writeHead(404);
+            response.write('File not found!');
+        } else {
+        response.writeHead(200, {'Content-Type': 'text/html'});
+            response.write(data);
+        }
+        response.end();
+    });
+});

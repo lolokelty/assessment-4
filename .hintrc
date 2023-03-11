@@ -3,19 +3,12 @@
     "development"
   ],
   "hints": {
-    "axe/language": [
+    "axe/forms": [
       "default",
       {
-        "html-has-lang": "off"
+        "label": "on"
       }
     ],
-    "meta-viewport": "off",
-    "axe/parsing": [
-      "default",
-      {
-        "duplicate-id-active": "off"
-      }
-    ],
-    "button-type": "off"
+    "meta-viewport": "on"
   }
 }

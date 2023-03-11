@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Back End Assessment</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body class="container">
     <button id="complimentButton">Get a compliment</button>
@@ -11,13 +12,13 @@
     <button id="pictureButton">Get a picture</button>
     
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="main.js"></script>
+    <script src="main.js" defer></script>
 
     <div id="picture-id"></div>
     <script>
     //Get picture
 document.getElementById("pictureButton").onclick = function () {
-        axios.get("http://localhost:2000/api/picture/")
+        axios.get("http://localhost:4000/api/picture/")
             .then(function (response) {
               const data = response.data;
               alert(data);
@@ -25,6 +26,29 @@ document.getElementById("pictureButton").onclick = function () {
       };
     </script>
 <header>
+  
+  <body>
+    <h1 id="replace">meep</h1>
+    <input id="getkey">
+    <button id="button" onclick="get()">get</button>
+  
+    <script>
+      function get() {
+$.ajax({
+        type: 'GET',
+        url: `https://databasetest.aquarial.repl.co/ajaxcall?keyUse=${document.querySelector('#getkey').value}`,
+        dataType: 'text',
+      })
+        .done(function (data) {
+          console.log('Response:', JSON.stringify(data, "", 2));
+          $('#replace').html(JSON.stringify(data, "", 2));
+        })
+        .fail(function (jqXJR, textStatus, err) {
+          console.log('Error:', textStatus);
+        })
+      }
+    </script>
+  </body>
 </header>
 
 <main>
